@@ -1,3 +1,8 @@
+
+# How mutch time will be spent after pick up to respawn the item
+respawntime: 240
+
+# Locations, and details
 ItemInfos:
   item1:
     world: 'world'
