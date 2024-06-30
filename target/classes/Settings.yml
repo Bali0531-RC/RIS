@@ -1,0 +1,15 @@
+ItemInfos:
+  item1:
+    world: 'world'
+    x: 100.0
+    y: 64.0
+    z: 100.0
+    item: DIAMOND
+    value: 10
+  item2:
+    world: 'world'
+    x: 200.0
+    y: 64.0
+    z: 200.0
+    item: EMERALD
+    value: 20

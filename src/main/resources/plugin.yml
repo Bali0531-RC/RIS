@@ -1,0 +1,14 @@
+name: RIS
+version: '${project.version}'
+main: org.bali.ris.Main
+api-version: '1.21'
+load: STARTUP
+commands:
+  ris:
+    description: nothing
+  ris reload:
+    description: Reload the RIS plugin
+    usage: /ris reload
+  ris respawn:
+    description: Respawn all item
+    usage: /ris respawn

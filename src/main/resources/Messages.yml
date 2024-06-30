@@ -1,0 +1,3 @@
+reload: '&aConfiguration reloaded successfully.'
+respawn: '&aItems respawned successfully.'
+received_value: '&aYou recieved: &6$VALUE'
