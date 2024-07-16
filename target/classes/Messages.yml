@@ -1,3 +1,7 @@
 reload: '&aConfiguration reloaded successfully.'
 respawn: '&aItems respawned successfully.'
-received_value: '&aYou recieved: &6$VALUE'
+received_value: '&aYou received: &6$VALUE'
+no_permission: '&cYou do not have permission to use this command.'
+unknown_command: '&cUnknown command.'
+usage_add: '&cUsage: /ris add <ID> <itemname> <Value>'
+usage_delete: '&cUsage: /ris delete <ID>'

@@ -23,6 +23,24 @@ public class Settings {
         return config;
     }
 
+    public void addSpawnInfo(String id, String world, double x, double y, double z, String item, int value) {
+        this.config.set("ItemInfos." + id + ".world", world);
+        this.config.set("ItemInfos." + id + ".x", x);
+        this.config.set("ItemInfos." + id + ".y", y);
+        this.config.set("ItemInfos." + id + ".z", z);
+        this.config.set("ItemInfos." + id + ".item", item);
+        this.config.set("ItemInfos." + id + ".value", value);
+        saveConfig();
+    }
+
+    public boolean removeSpawnInfo(String id) {
+        if (this.config.contains("ItemInfos." + id)) {
+            this.config.set("ItemInfos." + id, null);
+            saveConfig();
+            return true;
+        }
+        return false;
+    }
     public void saveConfig() {
         try {
             config.save(file);

@@ -2,13 +2,19 @@ name: RIS
 version: '${project.version}'
 main: org.bali.ris.Main
 api-version: '1.21'
-load: STARTUP
+load: POSTWORLD
 commands:
   ris:
     description: nothing
   ris reload:
     description: Reload the RIS plugin
     usage: /ris reload
+  ris add:
+    description: Add a spawn point.
+    usage: /ris add <ID> <itemname> <Value>
+  ris delete:
+    description: Removes a spawn point.
+    usage: /ris delete <ID>
   ris respawn:
     description: Respawn all item
     usage: /ris respawn
