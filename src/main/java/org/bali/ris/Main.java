@@ -24,7 +24,8 @@ public final class Main extends JavaPlugin {
         settings = new Settings("Settings.yml", this);
         messages = new Messages(new Settings("Messages.yml", this));
         RISCommand risCommand = new RISCommand(this);
-        getCommand("ris").setTabCompleter(new RISCommand(this));
+        this.getCommand("ris").setExecutor(risCommand);
+        this.getCommand("ris").setTabCompleter(risCommand);
         risCommand.getItemSpawnTask().run();
         // Register the PlayerPickupItemEvent
         Bukkit.getPluginManager().registerEvents(new Listener() {
