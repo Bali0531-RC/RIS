@@ -47,7 +47,7 @@ public class RISCommand implements CommandExecutor, TabCompleter {
                     break;
                 case "add":
                     if (sender.hasPermission("RIS.add")) {
-                        if (args.length == 4 && sender instanceof Player) {
+                        if (args.length == 5 && sender instanceof Player) {
                             String id = args[1];
                             String itemName = args[2].toUpperCase();
                             int value;
@@ -57,8 +57,9 @@ public class RISCommand implements CommandExecutor, TabCompleter {
                                 sender.sendMessage(ChatColor.RED + "Value must be a number.");
                                 return true;
                             }
+                            String commandStr = args[4];
                             Player player = (Player) sender;
-                            plugin.getSettings().addSpawnInfo(id, player.getWorld().getName(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), itemName, value);
+                            plugin.getSettings().addSpawnInfo(id, player.getWorld().getName(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), itemName, value, commandStr);
                             sender.sendMessage(plugin.getMessages().getMessage("item_spawn_added").replace("$ID", id));
                         } else {
                             sender.sendMessage(plugin.getMessages().getMessage("usage_add"));
@@ -83,9 +84,18 @@ public class RISCommand implements CommandExecutor, TabCompleter {
                         sender.sendMessage(plugin.getMessages().getMessage("no_permission"));
                     }
                     break;
+                case "help":
+                    sender.sendMessage(plugin.getMessages().getMessage("help_header"));
+                    sender.sendMessage(plugin.getMessages().getMessage("help_reload"));
+                    sender.sendMessage(plugin.getMessages().getMessage("help_respawn"));
+                    sender.sendMessage(plugin.getMessages().getMessage("help_add"));
+                    sender.sendMessage(plugin.getMessages().getMessage("help_delete"));
+                    break;
                 default:
                     sender.sendMessage(plugin.getMessages().getMessage("unknown_command"));
             }
+        } else {
+            sender.sendMessage(plugin.getMessages().getMessage("unknown_command"));
         }
         return true;
     }
@@ -107,6 +117,7 @@ public class RISCommand implements CommandExecutor, TabCompleter {
                 if (sender.hasPermission("RIS.delete")) {
                     completions.add("delete");
                 }
+                completions.add("help");
             }
         }
         return completions;

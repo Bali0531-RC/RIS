@@ -11,6 +11,7 @@ ItemInfos:
     z: 100.0
     item: DIAMOND
     value: 10
+    command: "eco give %player% %value%"
   item2:
     world: 'world'
     x: 200.0
@@ -18,3 +19,4 @@ ItemInfos:
     z: 200.0
     item: EMERALD
     value: 20
+    command: "eco give %player% %value%"

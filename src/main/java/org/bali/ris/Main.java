@@ -1,3 +1,4 @@
+// Update Main.java
 package org.bali.ris;
 
 import org.bali.ris.utils.Messages;
@@ -42,14 +43,18 @@ public final class Main extends JavaPlugin {
                     // Despawn the item
                     item.remove();
 
-                    // Get the value from the Settings.yml file
+                    // Get the value and command from the Settings.yml file
                     for (String key : Main.this.getSettings().getConfig().getConfigurationSection("ItemInfos").getKeys(false)) {
                         Material itemMaterial = Material.valueOf(Main.this.getSettings().getConfig().getString("ItemInfos." + key + ".item"));
                         if (item.getItemStack().getType() == itemMaterial) {
                             int value = Main.this.getSettings().getConfig().getInt("ItemInfos." + key + ".value");
+                            String command = Main.this.getSettings().getConfig().getString("ItemInfos." + key + ".command");
+
+                            // Replace placeholders in the command
+                            command = command.replace("%player%", player.getName()).replace("%value%", String.valueOf(value));
 
                             // Run the command
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "eco give " + player.getName() + " " + value);
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                             // Send the received_value message to the player
                             String message = Main.this.getMessages().getMessage("received_value").replace("$VALUE", String.valueOf(value));
                             player.sendMessage(message);

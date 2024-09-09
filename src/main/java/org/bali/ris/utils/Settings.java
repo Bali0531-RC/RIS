@@ -1,3 +1,4 @@
+// Update Settings.java
 package org.bali.ris.utils;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -23,13 +24,14 @@ public class Settings {
         return config;
     }
 
-    public void addSpawnInfo(String id, String world, double x, double y, double z, String item, int value) {
+    public void addSpawnInfo(String id, String world, double x, double y, double z, String item, int value, String command) {
         this.config.set("ItemInfos." + id + ".world", world);
         this.config.set("ItemInfos." + id + ".x", x);
         this.config.set("ItemInfos." + id + ".y", y);
         this.config.set("ItemInfos." + id + ".z", z);
         this.config.set("ItemInfos." + id + ".item", item);
         this.config.set("ItemInfos." + id + ".value", value);
+        this.config.set("ItemInfos." + id + ".command", command);
         saveConfig();
     }
 
@@ -41,6 +43,7 @@ public class Settings {
         }
         return false;
     }
+
     public void saveConfig() {
         try {
             config.save(file);
