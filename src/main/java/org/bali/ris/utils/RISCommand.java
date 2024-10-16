@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bali.ris.Main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RISCommand implements CommandExecutor, TabCompleter {
@@ -47,7 +48,7 @@ public class RISCommand implements CommandExecutor, TabCompleter {
                     break;
                 case "add":
                     if (sender.hasPermission("RIS.add")) {
-                        if (args.length == 5 && sender instanceof Player) {
+                        if (args.length >= 5 && sender instanceof Player) {
                             String id = args[1];
                             String itemName = args[2].toUpperCase();
                             int value;
@@ -57,7 +58,7 @@ public class RISCommand implements CommandExecutor, TabCompleter {
                                 sender.sendMessage(ChatColor.RED + "Value must be a number.");
                                 return true;
                             }
-                            String commandStr = args[4];
+                            String commandStr = String.join(" ", Arrays.copyOfRange(args, 4, args.length));
                             Player player = (Player) sender;
                             plugin.getSettings().addSpawnInfo(id, player.getWorld().getName(), player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), itemName, value, commandStr);
                             sender.sendMessage(plugin.getMessages().getMessage("item_spawn_added").replace("$ID", id));
